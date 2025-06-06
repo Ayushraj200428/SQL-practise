@@ -1,0 +1,1 @@
+Welcome to my SQL Practice repository! This project contains a collection of SQL problems and solutions that I have practiced to strengthen my understanding of database concepts. These questions cover a wide range of topics from beginner to advanced levels, including queries, joins, subqueries and aggregate functions.
