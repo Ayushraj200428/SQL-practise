@@ -1,0 +1,43 @@
+CREATE DATABASE PRACTISE;
+SHOW DATABASES;
+USE PRACTISE;
+
+-- 1. Create table
+CREATE TABLE Employee (
+    EmployeeID INT PRIMARY KEY,
+    FName VARCHAR(50),
+    LName VARCHAR(50),
+    Salary DECIMAL(10,2),
+    JoiningDate DATE,
+    ManagerID INT NULL,
+    DepartmentID INT,
+    UpdatedAt DATETIME
+);
+
+-- 2. Insert sample data
+INSERT INTO Employee VALUES
+(1, 'Alice',   'Anderson',   90000, '2023-05-01', NULL, 10, '2025-06-01 10:00:00'),
+(2, 'Bob',     'Brown',      120000,'2025-01-15', 1,   20, '2025-06-08 09:30:00'),
+(3, 'Charlie', 'Clark',       80000,'2025-06-01', 1,   10, '2025-06-08 08:45:00'),
+(4, 'David',   'Doe',        150000,'2024-12-20', NULL, 20, '2025-06-07 16:00:00'),
+(5, 'Eve',     'Evans',       70000,'2025-05-10', 2,   10, '2025-06-08 07:15:00'),
+(6, 'Frank',   'Fitz',        120000,'2022-11-11', 4,   30, '2025-06-06 12:00:00'),
+(7, 'Admin',   'Aiden',       130000,'2024-06-08', NULL, 30, '2025-06-08 11:00:00'),
+(8, 'Aaron',   'Aardvark',    60000,'2025-06-07', 5,   10, '2025-06-08 12:00:00'),
+(9, 'Grace',   'Green',       60000,'2022-12-01', 2,   20, '2025-06-08 12:30:00'),
+(10,'Hannah',  'Hart',        60000,'2023-06-08', 3,   20, '2025-06-08 13:00:00');
+
+-- QUERIES START:-
+SELECT * FROM employee;
+SELECT SALARY,COUNT(*) FROM EMPLOYEE group by(SALARY) having count(*)>1;
+select count(*) from Employee;
+select departmentID ,sum(salary) from Employee group by(departmentID);
+select departmentID ,avg(salary) from Employee group by(departmentID);
+SELECT * FROM employee LIMIT 0,3;
+SELECT employeeID,ManagerID from employee where ManagerID IS NULL; 
+SELECT departmentID, COUNT(*) FROM employee group by(departmentID);select departmentID,max(salary) from employee group by(departmentID);
+select departmentID,min(salary) from employee group by(departmentID);
+select * from employee where JoiningDate > DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+select * from employee where  UpdatedAt >= now()- interval 1 hour;
+select * from employee where  month(JoiningDate)=month(curdate());
+select departmentID ,avg(salary) from Employee group by(departmentID) order by avg(salary) desc limit 1;
